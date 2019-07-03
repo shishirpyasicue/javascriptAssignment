@@ -4,145 +4,11 @@
     <title>Register</title>
 	<meta charset="utf-8" />
 
-    <style type="text/css">
 
-        @import "http://fonts.googleapis.com/css?family=Ubuntu";
-div#main{
-width:430px;
-height:550px;
-margin:0 auto;
-font-family:'Ubuntu',sans-serif
-}
-div#form_sample{
-text-align:center;
-border:3px solid #ccc;
-width:300px;
-padding:0 50px 15px;
-margin-top:20px;
-box-shadow:0 0 15px;
-border-radius:6px;
-float:left
-}
-#main h1{
-margin-top:40px
-}
-hr{
-margin-top:-5px
-}
-label{
-float:left;
-font-size:16px
-}
-input[type="text"]{
-width:100%;
-margin-top:5px;
-margin-bottom:10px;
-padding:10px;
-border:3px solid #2BC1F2
-}
-input[type="password"]{
-width:100%;
-margin-top:1px;
-margin-bottom:15px;
-padding:10px;
-border:3px solid #2BC1F2
-}
-textarea{
-width:100%;
-border:3px solid #2BC1F2;
-padding:10px;
-margin-bottom:25px;
-margin-top:10px;
-height:100px;
-resize:none
-}
-input[type="submit"]{
-width:100%;
-padding:10px 45px;
-background-color:#2BC1F2;
-border:none;
-color:#fff;
-font-size:18px;
-font-weight:700;
-cursor:pointer;
-font-family:'Ubuntu',sans-serif
-}
-    </style>
+    <link href="scripts/Register.css" rel="stylesheet" />
+    <script src="scripts/register.js"></script>
 
-    <script>
-
-      
-        function store() {
-
-            if (typeof (Storage) !== "undefined") {
-                // Code for localStorage
-                var person = {
-                    userName:document.registration.txtUsername.value,
-                    firstName:  document.registration.txtFirstname.value,
-                    lastName: document.registration.txtLastname.value,
-                    address: document.registration.txtAddress.value,
-                    password: document.registration.txtPassword.value,
-                };
-     // var userid = document.getElementById("userid");
-                localStorage.setItem("person",JSON.stringify( person));
-            } else {
-                // No web storage Support.
-            }
-    }
-  
-        function getitem() {
-            var name = JSON.parse(localStorage.getItem('person'));
-        }
-
-function validateform(form){
-    var txtUsername = document.registration.txtUsername.value;
-    var txtFirstname = document.registration.txtFirstname.value;
-    var txtLastname = document.registration.txtLastname.value;
-    var txtAddress = document.registration.txtAddress.value;
-    //var name = document.registration.txtUsername.value;
-    var txtPassword = document.registration.txtPassword.value;
-
-
-
-
-if (txtAddress == null || txtAddress == "") {
-        alert("Name can't be blank");
-        return false;
-    }
-else if (txtFirstname == null || txtFirstname == "") {
-    alert("Firstname can't be blank");
-  return false;
-}
-else if (txtLastname == null || txtLastname == "") {
-    alert("Lastname can't be blank");
-    return false;
-}
-else if (txtUsername == null || txtUsername == "") {
-    alert("Username can't be blank");
-    return false;
-}
-
-else if (txtPassword.length < 6) {
-  alert("Password must be at least 6 characters long.");
-  return false;
-}
-else if (form.opGender.value == "Select") {
-    alert("Please choose your Gender");
-    return false;
-}
-
-store();
-//getitem();
-
-location.href = "http://localhost:63970/Login.html";
-}
-    </script>
-    <style>
-
-        ul {
-  list-style-type: none;
-}
-    </style> 
+   
 </head>
 <body>
     <form name='registration' >
@@ -150,17 +16,20 @@ location.href = "http://localhost:63970/Login.html";
         <h1>Registration Form</h1>
 
         <ul list-style-type: none;>
-            <li><label for="txtUsername">Username/Email:</label></li>
-            <li><input type="text" name="txtUsername"  /></li>
-            <li><label for="txtPassword">Password</label></li>
-            <li><input type="password" name="txtPassword" size="12" /></li>
-            <li><label for="txtFirstname">First name:</label></li>
-            <li><input type="text" name="txtFirstname"  /></li>
-            <li><label for="txtLastname">Last name:</label></li>
-            <li><input type="text" name="txtLastname"  /></li>
-            <li><label for="txtAddress">Address:</label></li>
-            <li><input type="text" name="txtAddress" size="100" /></li>
-            <li><label for="opGender">Gender:</label></li>
+            <li><label for="txtUsername">Email:</label></li> <br />
+            <li><input type="text" name="txtUsername"  /></li> <br />
+            <li><label for="txtPassword">Password</label></li> <br />
+            <li><input type="password" name="txtPassword" size="16" /></li> <br />
+            <li> <label for="txtConfirmPassword">Confirm Password</label></li> <br />
+            <li><input type="password" name="txtConfirmPassword" size="12" /></li> <br />
+
+<li><label for="txtFirstname">First name:</label></li><br />
+            <li><input type="text" name="txtFirstname"  /></li><br />
+            <li><label for="txtLastname">Last name:</label></li><br />
+            <li><input type="text" name="txtLastname"  /></li><br />
+            <li><label for="txtAddress">Address:</label></li><br />
+            <li><input type="text" name="txtAddress" size="100" /></li><br />
+            <li><label for="opGender">Gender:</label></li><br />
             <li><select  name="opGender" class="nofocus" id="gender" >
                     <option value="Select">Select</option>
     <option value="other">Other</option>

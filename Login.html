@@ -3,38 +3,11 @@
 <head>
     <title></title>
 	<meta charset="utf-8" />
+    <script src="http://code.jquery.com/jquery-1.11.2.min.js"></script>
 
-    <script >
-
-        function CreateCookie() {
-            if (document.login.txtUsername.value == "") {
-                alert("Enter some value!");
-                return;
-            }
-            var today = new Date(); // Actual date
-            var expire = new Date(); // Expiration of the cookie
-            var number_of_days = 10; // Number of days for the cookie to be valid (10 in this case)
-
-            expire.setTime(today.getTime() + 60 * 60 * 1000 * 24 * number_of_days); // Current time + (60 sec * 60 min * 1000 milisecs * 24 hours * number_of_days)
-
-            cookievalue = escape(document.login.txtUsername.value) ;
-            document.cookie = "username=" + cookievalue + ";" + "expires=" + expire.toGMTString();
-            //document.write("Setting Cookies : " + "username=" + cookievalue);
-        }
-        function validateform() {
-            var name = JSON.parse(localStorage.getItem('person'));
-            if (name.userName == document.login.txtUsername.value && name.password == document.login.txtPassword.value)
-            {
-                CreateCookie();
-                location.href = "http://localhost:63970/Profilepage.html";
-            }
-            else {
-                alert("Invalid User ID or password");
-                return false;
-            }
-        }
-
-    </script>
+    <link href="scripts/login.css" rel="stylesheet" />
+    <script src="scripts/login.js"></script>
+    
 </head>
 <body>
     <header>Login</header>
@@ -46,6 +19,8 @@
             <li><input type="password" name="txtPassword" size="12" /></li>
         </ul>
         <input type="button" name="SubmitButton" value="Submit" onClick="validateform(this.form)">
+        <input type="button" name="RegisterButton" value="Register" onClick="redirectToRegister()">
     </form>
+    
 </body>
 </html>

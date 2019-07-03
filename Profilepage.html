@@ -1,0 +1,104 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+	<meta charset="utf-8" />
+    
+
+    <link href="scripts/Profile.css" rel="stylesheet" />
+   
+</head>
+<body>
+    <input type="hidden" id="todorowid" name="todorowid" >
+    <table style="width:100%;" id="tbl">
+        <tr><td colspan="2"><h1> <label id="Title" style="font-size:xx-large"></label></h1><input type="button" value="logout" onclick="logout()" /></td></tr>
+        <tr>
+            <td align="right">First Name:</td>
+            <td>
+                <input id="txtFirstName" type="text" class="c1" />
+            </td>
+        </tr>
+        <tr>
+            <td align="right">Last Name:</td>
+            <td>
+                <input id="txtLastName" type="text" class="c1" />
+            </td>
+        </tr>
+        <tr>
+            <td align="right">Address:</td>
+            <td>
+                <textarea id="txtAddress" class="c1"></textarea>
+            </td>
+        </tr>
+       
+        <tr>
+            <td align="right">Email:</td>
+            <td>
+                <input id="txtEmail" type="email" class="c1" />
+            </td>
+        </tr>
+       
+        
+        <tr>
+            <td align="right"><input id="btnsave" type="button" value="Save" /></td>
+            <td><input id="btnclear" type="button" value="Clear" /></td>
+            <!--<td><input id="btnclearstorage" type="button" value="Clear Storage" /></td>-->
+        </tr>
+    </table>
+   
+
+
+        <table style="width:100%;" id="tabl2">
+            <tr>
+
+                <td>To Do :</td>
+                <td>
+                    <input id="txtToDo" type="text" class="c2" />
+                </td>
+
+                <td>Start Date:</td>
+                <td>
+                    <input id="txtStartDate" type="date" class="c2" />
+                </td>
+
+                <td>Due Date:</td>
+                <td>
+                    <input id ="txtDueDate" type="date" class="c2" />
+</td>
+
+                <td>Categories:</td>
+                <td>
+                    <input id="txtCategories" type="text" class="c2" />
+                </td>
+                <td>ispublic:
+    </td>
+    <td>
+        <input id="txtispublic" type="text" class="c2" />
+    </td>
+                <td>
+                    Description:
+                </td>
+                <td>
+                    <input id="txtdescription" type="text" class="c2" />
+                </td>
+               
+    <td><input id="btnadd" type="button" value="Add Todo" /></td>
+</tr>
+        
+           
+           
+        
+    </table>
+    <h4>ToDo List</h4>
+    <div id="dvcontainer">
+
+
+
+    </div>
+
+
+
+    <script src="scripts/Profile.js"></script>
+  
+</body>
+</html>
