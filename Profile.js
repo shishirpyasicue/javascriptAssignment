@@ -99,7 +99,7 @@ function logout() {
         eraseCookie(cookies[i].split("=")[0]);
     alert("Logged out successfully");
 
-    location.href = "http://localhost:63970/Login.html";
+    location.href = "http://localhost/ToDoApp/Login.html";
 
 }
 function createCookie(name, value, days) {
@@ -210,7 +210,7 @@ function edit_row(no) {
             }
             else {
 
-                location.href = "http://localhost:63970/Login.html";
+                location.href = "http://localhost/ToDoApp/Login.html";
 
             }
         },

@@ -23,7 +23,7 @@ function validateCookie()
                 
     }
     else {
-        location.href = "http://localhost:63970/Profilepage.html";
+        location.href = "http://localhost/ToDoApp/Profilepage.html";
     }
 }
 window.onload = validateCookie;
@@ -47,7 +47,7 @@ function CreateCookie() {
 
 function redirectToRegister()
 {
-    location.href = 'http://localhost:63970/Register.html';
+    location.href = 'http://localhost/ToDoApp/Register.html';
 }
 function validateform() {
 
@@ -65,13 +65,13 @@ function validateform() {
     }
     if (name == null) {
         alert("Please register yourself")
-        location.href = "http://localhost:63970/Register.html";
+        location.href = "http://localhost/ToDoApp/Register.html";
         return false;
     }
     if (name.userName == document.login.txtUsername.value && name.password == document.login.txtPassword.value)
     {
         CreateCookie();
-        // location.href = "http://localhost:63970/Profilepage.html";
+        // location.href = "http://localhost/ToDoApp/Profilepage.html";
         validateCookie();
     }
     else {

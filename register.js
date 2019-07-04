@@ -81,5 +81,5 @@ function validateform(form) {
     store();
     //getitem();
 
-    location.href = "http://localhost:63970/Login.html";
+    location.href = "http://localhost/ToDoApp/Login.html";
 }
