@@ -1,5 +1,41 @@
 ﻿
+function validateform() {
+    var inputs = document.getElementsByClassName("c1");
+    var Person = {
 
+        firstName: "",
+        lastName: "",
+        address: "",
+        userName: "",
+
+    };
+
+    Person.firstName = inputs[0].value;
+    Person.lastName = inputs[1].value;
+    Person.address = inputs[2].value;
+    Person.userName = inputs[3].value;
+
+    
+
+    if (Person.userName == null || Person.userName == "") {
+        alert("Email can't be blank");
+        return false;
+    }
+
+
+    else if (Person.firstName == null || Person.firstName == "") {
+        alert("Firstname can't be blank");
+        return false;
+    }
+    else if (Person.lastName == null || Person.lastName == "") {
+        alert("Lastname can't be blank");
+        return false;
+    }
+    else if (Person.address == null || Person.address == "") {
+        alert("Address can't be blank");
+        return false;
+    }
+}
 function sortTable(n) {
     var table, rows, switching, i, x, y, shouldSwitch, dir, switchcount = 0;
     table = document.getElementById("myTable2");
@@ -131,8 +167,8 @@ function edit_row(no) {
 
         firstName: "",
         lastName: "",
-        Address: "",
-        Email: "",
+        address: "",
+        userName: "",
 
     };
 
@@ -179,14 +215,16 @@ function edit_row(no) {
             }
         },
         saveitem: function () {
+
+            validateform();
             var lscount = localStorage.length; //Get the Length of the LocalStorage
             //Read all elements on UI using class name
             var inputs = document.getElementsByClassName("c1");
             //Person.Id = inputs[0].value;
             Person.firstName = inputs[0].value;
             Person.lastName = inputs[1].value;
-            Person.Address = inputs[2].value;
-            Person.Email = inputs[3].value;
+            Person.address = inputs[2].value;
+            Person.userName = inputs[3].value;
 
 
             //Convert the object into JSON ans store it in LocalStorage
