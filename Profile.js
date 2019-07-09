@@ -146,19 +146,86 @@ function edit_row(no) {
     document.getElementById('todorowid').value = no;
 
     document.getElementById('btnadd').value = "Save";
-
+    var inputsChk = document.getElementsByClassName("c3");
     var inputs = document.getElementsByClassName("c2");
     var oTable = document.getElementById('myTable2');
 
     //document.getElementById("edit_button" + no).style.display = "none";
     //document.getElementById("save_button" + no).style.display = "block";
-    document.getElementById("txtToDo").value = oTable.rows[no + 1].cells[0].innerText;
-    document.getElementById("txtStartDate").value = oTable.rows[no + 1].cells[1].innerText;
-    document.getElementById("txtDueDate").value = oTable.rows[no + 1].cells[2].innerText;
-    document.getElementById("txtCategories").value = oTable.rows[no + 1].cells[3].innerText;
-    document.getElementById("txtispublic").value = oTable.rows[no + 1].cells[4].innerText;
-    document.getElementById("txtdescription").value = oTable.rows[no + 1].cells[5].innerText;
+    document.getElementById("txtToDo").value = oTable.rows[no + 1].cells[1].innerText;
+    document.getElementById("txtStartDate").value = oTable.rows[no + 1].cells[2].innerText;
+    document.getElementById("txtDueDate").value = oTable.rows[no + 1].cells[3].innerText;
 
+
+    var nameArr = oTable.rows[no + 1].cells[4].innerText.split(',')
+
+   // inputschk.txtCategories1.checked
+    if (nameArr[0] == "false")
+        document.getElementById("txtCategories1").checked = false;
+    else
+        document.getElementById("txtCategories1").checked = true;
+
+    if (nameArr[1] == "false")
+        document.getElementById("txtCategories2").checked = false;
+    else
+        document.getElementById("txtCategories2").checked = true;
+
+    if (nameArr[2] == "false")
+        document.getElementById("txtCategories3").checked = false;
+    else
+        document.getElementById("txtCategories3").checked = true;
+
+    if (nameArr[3] == "false")
+        document.getElementById("txtCategories4").checked = false;
+    else
+        document.getElementById("txtCategories4").checked = true;
+
+    if (nameArr[4] == "false ")
+        document.getElementById("txtCategories5").checked = false;
+    else
+        document.getElementById("txtCategories5").checked = true;
+
+    if (oTable.rows[no + 1].cells[5].innerText == "on ")
+
+        document.getElementById("txtMarkasdone").checked = true;
+
+    else
+        document.getElementById("txtMarkasdone").checked = false;
+
+
+
+
+    if (oTable.rows[no + 1].cells[5].innerText == "on ")
+
+        document.getElementById("txtispublic").checked = true;
+
+    else
+        document.getElementById("txtispublic").checked = false;
+
+
+    
+    document.getElementById("txtReminderDate").value = oTable.rows[no + 1].cells[7].innerText;
+    document.getElementById("txtdescription").value = oTable.rows[no + 1].cells[8].innerText;
+    document.getElementById("txtAttachimagesupload").value = oTable.rows[no + 1].cells[9].innerText;
+    //txtMarkasdone
+    //txtReminderDate
+
+    //toDoname: inputs[0].value,
+    //startDate: inputs[1].value,
+    //dueDate: inputs[2].value,
+    //categories: inputschk[0] + "," + inputschk[1] + "," + inputschk[2] + "," + inputschk[3] + "," + inputschk[4],
+    //Markasdone: inputs[3].value,
+    //ispublic: inputs[4].value,
+    //ReminderDate: inputs[5].value,
+    //description: inputs[6].value,    
+    //Attachimagesupload: inputs[7].value
+
+    //data[i].toDoname = inputs[0].value,
+    //data[i].startDate = inputs[1].value,
+    //data[i].dueDate = inputs[2].value,
+    //data[i].categories = inputs[3].value,
+    //data[i].ispublic = inputs[4].value,
+    //data[i].description = inputs[5].value
 
 }
 (function () {
@@ -176,9 +243,12 @@ function edit_row(no) {
         toDoname: "",
         startDate: "",
         dueDate: "",
+        Markasdone:"",
         categories: "",
         ispublic: "",
-        description: ""
+        description: "",
+        ReminderDate: "",
+        Attachimagesupload:""
     }]
 
     //JavaScript object containing methods for LocalStorage management
@@ -235,6 +305,7 @@ function edit_row(no) {
         saveTodoitem: function () {
             var lscount = localStorage.length; //Get the Length of the LocalStorage
             //Read all elements on UI using class name
+            var inputschk = document.getElementsByClassName("c3");
             var inputs = document.getElementsByClassName("c2");
             //Person.Id = inputs[0].value;
 
@@ -247,9 +318,12 @@ function edit_row(no) {
                     toDoname: inputs[0].value,
                     startDate: inputs[1].value,
                     dueDate: inputs[2].value,
-                    categories: inputs[3].value,
+                    categories: inputschk.txtCategories1.checked + "," + inputschk.txtCategories2.checked + "," + inputschk.txtCategories3.checked + "," + inputschk.txtCategories4.checked + "," + inputschk.txtCategories5.checked,
+                    Markasdone: inputs[3].value,
                     ispublic: inputs[4].value,
-                    description: inputs[5].value
+                    ReminderDate: inputs[5].value,
+                    description: inputs[6].value,    
+                    Attachimagesupload: inputs[7].value
                 }]
                 localStorage.setItem("Todo", JSON.stringify(Todo));
                 //Reload the Page
@@ -267,12 +341,27 @@ function edit_row(no) {
                         var data = JSON.parse(todo);
 
 
+                        //data[i].toDoname = inputs[0].value,
+                        //data[i].startDate = inputs[1].value,
+                        //data[i].dueDate = inputs[2].value,
+                        //data[i].categories = inputs[3].value,
+                        //data[i].ispublic = inputs[4].value,
+                        //data[i].description = inputs[5].value
+
+
                         data[i].toDoname = inputs[0].value,
-                        data[i].startDate = inputs[1].value,
-                        data[i].dueDate = inputs[2].value,
-                        data[i].categories = inputs[3].value,
+                        data[i].startDate =  inputs[1].value,
+                        data[i].dueDate =  inputs[2].value,
+                        data[i].categories = inputschk.txtCategories1.checked + "," + inputschk.txtCategories2.checked + "," + inputschk.txtCategories3.checked + "," + inputschk.txtCategories4.checked + "," + inputschk.txtCategories5.checked,
+                        data[i].Markasdone = inputs[3].value,
                         data[i].ispublic = inputs[4].value,
-                        data[i].description = inputs[5].value
+                        data[i].ReminderDate =  inputs[5].value,
+                        data[i].description = inputs[6].value,    
+                        data[i].Attachimagesupload =  inputs[7].value
+
+
+
+
                     }
                     localStorage.setItem("Todo", JSON.stringify(data));
                     location.reload();
@@ -281,12 +370,22 @@ function edit_row(no) {
                 var data = JSON.parse(todo);
 
                 var Todo = {
+                    //toDoname: inputs[0].value,
+                    //startDate: inputs[1].value,
+                    //dueDate: inputs[2].value,
+                    //categories: inputs[3].value,
+                    //ispublic: inputs[4].value,
+                    //description: inputs[5].value
+
                     toDoname: inputs[0].value,
                     startDate: inputs[1].value,
                     dueDate: inputs[2].value,
-                    categories: inputs[3].value,
+                    categories: inputschk.txtCategories1.checked + "," + inputschk.txtCategories2.checked + "," + inputschk.txtCategories3.checked + "," + inputschk.txtCategories4.checked + "," + inputschk.txtCategories5.checked,
+                    Markasdone: inputs[3].value,
                     ispublic: inputs[4].value,
-                    description: inputs[5].value
+                    ReminderDate: inputs[5].value,
+                    description: inputs[6].value,
+                    Attachimagesupload: inputs[7].value
                 }
                 data.push(Todo);
 
@@ -305,7 +404,7 @@ function edit_row(no) {
 
 
                 var render = "<table id='myTable2' border='1'>";
-                render += "<tr><th></th><th onclick='sortTable(0)'>To Do Name</th><th>Start Date</th><th>Due Date</th><th>Categories</th><th>isPublic</th><th>Description</th><th></th></tr>";
+                render += "<tr><th></th><th onclick='sortTable(0)'>To Do Name</th><th>Start Date</th><th>Due Date</th><th>Categories</th><th>Mark as done</th><th>isPublic</th><th>Reminder Date</th><th>Description</th><th>Attachimagesupload</th><th></th></tr>";
 
                 var todo = localStorage.getItem('Todo'); //Get Data from Key
                 if (todo != null) {
@@ -319,12 +418,28 @@ function edit_row(no) {
 
                         render += "<tr><td> <input type='checkbox' id='chk" + i + "' />";
 
-                        render += "<td>" + data[i].toDoname + " </td>";
-                        render += "<td>" + data[i].startDate + " </td>";
-                        render += "<td>" + data[i].dueDate + " </td>";
-                        render += "<td>" + data[i].categories + " </td>";
-                        render += "<td>" + data[i].ispublic + " </td>";
-                        render += "<td>" + data[i].description + " </td>";
+                        //render += "<td>" + data[i].toDoname + " </td>";
+                        //render += "<td>" + data[i].startDate + " </td>";
+                        //render += "<td>" + data[i].dueDate + " </td>";
+                        //render += "<td>" + data[i].categories + " </td>";
+                        //render += "<td>" + data[i].ispublic + " </td>";
+                        //render += "<td>" + data[i].description + " </td>";
+
+
+
+                        render += "<td>" + data[i].toDoname+ " </td>";
+                        render += "<td>" + data[i].startDate+ " </td>";
+                        render += "<td>" + data[i].dueDate+ " </td>";
+                        render += "<td>" + data[i].categories+ " </td>";
+                        render += "<td>" + data[i].Markasdone+ " </td>";
+                        render += "<td>" + data[i].ispublic+ " </td>";
+                        render += "<td>" + data[i].ReminderDate+ " </td>";
+                        render += "<td>" + data[i].description+ " </td>";
+                        render += "<td>" + data[i].Attachimagesupload + " </td>";
+
+
+
+
 
 
                         render += "<td>" +

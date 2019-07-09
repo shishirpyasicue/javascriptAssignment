@@ -81,5 +81,5 @@ function validateform(form) {
     store();
     //getitem();
 
-    location.href = "./Login.html";
+    location.href = "Login.html";
 }

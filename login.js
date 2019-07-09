@@ -23,7 +23,7 @@ function validateCookie()
                 
     }
     else {
-        location.href = "./Profilepage.html";
+        location.href = "Profilepage.html";
     }
 }
 window.onload = validateCookie;
@@ -47,9 +47,9 @@ function CreateCookie() {
 
 function redirectToRegister()
 {
-    location.href = './Register.html';
+    location.href = 'Register.html';
 }
-function validateform() {
+function validateform(form) {
 
     var txtUsername = document.login.txtUsername.value;
     var txtPassword = document.login.txtPassword.value
@@ -65,13 +65,13 @@ function validateform() {
     }
     if (name == null) {
         alert("Please register yourself")
-        location.href = "./Register.html";
+        location.href = "Register.html";
         return false;
     }
     if (name.userName == document.login.txtUsername.value && name.password == document.login.txtPassword.value)
     {
         CreateCookie();
-        // location.href = "../Profilepage.html";
+        // location.href = "Profilepage.html";
         validateCookie();
     }
     else {
